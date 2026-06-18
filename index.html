@@ -5,51 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Microsoft Office Course | Sher's Study Centre</title>
     <style>
-        body { font-family: "Century Gothic", sans-serif; margin: 0; padding: 0; background-color: #FFFFFF; color: #333; }
+        body { 
+            font-family: "Century Gothic", sans-serif; 
+            margin: 0; padding: 0; 
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#dcd5c5 1px, transparent 1px);
+            background-size: 20px 20px;
+            color: #333; line-height: 1.6;
+        }
 
-        /* Header / Logo */
+        /* Fixed Header */
         .logo-container {
-            display: flex; align-items: center; justify-content: center;
-            height: 120px; background: #FFFFFF; position: sticky; top: 0; z-index: 1000;
-            transition: all 0.4s ease; padding: 0 20px;
+            display: flex; align-items: center; justify-content: space-between;
+            height: 90px; background: #fdfbf7; 
+            position: fixed; top: 0; left: 0; right: 0; 
+            z-index: 1000; padding: 0 20px;
+            border-bottom: 3px solid #D4AF37;
         }
-        .logo-container.scrolled {
-            height: 70px; justify-content: space-between;
-            border-bottom: 3px solid #D4AF37; background: rgba(255, 255, 255, 0.98);
+
+        /* FIX: scroll-margin-top handles the fixed header offset */
+        section { 
+            padding: 20px; max-width: 800px; margin: auto;
+            scroll-margin-top: 100px; 
         }
-        .logo-container img { height: 80px; transition: transform 0.4s ease; }
-        .logo-container.scrolled img { transform: scale(0.6); }
 
         /* Menu */
-        .nav-wrapper { opacity: 0; transition: opacity 0.4s ease; cursor: pointer; position: relative; }
-        .logo-container.scrolled .nav-wrapper { opacity: 1; }
+        .nav-wrapper { cursor: pointer; position: relative; padding: 10px; }
         .line { width: 30px; height: 3px; background: #87CEEB; margin: 5px 0; }
         
         .dropdown-menu {
-            display: none; position: absolute; right: 0; top: 40px;
-            background: #f9f9f9; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
-            padding: 10px 0;
+            display: none; position: absolute; right: 0; top: 70px;
+            background: #fff; min-width: 200px; box-shadow: 0px 8px 16px rgba(0,0,0,0.1);
+            border: 1px solid #ddd;
         }
-        .dropdown-menu a { display: block; padding: 10px 20px; color: #333; text-decoration: none; }
+        .dropdown-menu.show { display: block; }
+        .dropdown-menu a { display: block; padding: 12px 20px; color: #333; text-decoration: none; border-bottom: 1px solid #eee; }
         .dropdown-menu a:hover { background: #87CEEB; color: white; }
 
-        /* Content */
-        section { padding: 20px; max-width: 900px; margin: auto; }
         h2 { color: #D4AF37; border-bottom: 2px solid #87CEEB; padding-bottom: 5px; }
         ul { list-style: none; padding: 0; }
-        li::before { content: "●"; color: #D4AF37; margin-right: 10px; }
-        li { margin-bottom: 8px; }
+        li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        li::before { content: "●"; color: #D4AF37; position: absolute; left: 0; }
 
-        /* Footer */
         .footer-band { background-color: #87CEEB; color: white; text-align: center; padding: 30px 20px; margin-top: 40px; border-top: 5px solid #D4AF37; }
-        .footer-content { max-width: 800px; margin: auto; font-weight: bold; }
     </style>
 </head>
 <body>
 
-    <div class="logo-container" id="logoBox">
-        <img src="logo.png" alt="Logo">
-        <div class="nav-wrapper" onclick="toggleMenu()">
+    <div class="logo-container">
+        <img src="logo.png" alt="Logo" style="height:60px;">
+        <div class="nav-wrapper" onclick="toggleMenu(event)">
             <div class="line"></div><div class="line"></div><div class="line"></div>
             <div id="menu" class="dropdown-menu">
                 <a href="#about">About</a>
@@ -59,60 +64,51 @@
         </div>
     </div>
 
+    <div style="padding-top: 100px;"></div>
+
     <section id="about">
         <h2>About the Course</h2>
-        <p>Learn the essential skills needed for today’s digital workplace with our Microsoft Office beginner Course.</p>
-
-<p>This course introduces you to the core Microsoft Office tools<b>(Word, Excel, PowerPoint, and Outlook)</b>, giving you the confidence to handle everyday tasks with ease.</p>
-
-<p>Through practical, hands-on lessons, you’ll learn how to create polished documents, organise data, design engaging presentations, and manage your emails more efficiently.
-Whether you’re a student, job seeker, or professional looking to upskill, this course will boost your productivity and help you apply your skills in real-world scenarios from day one.</p>
+        <p>Learn the essential skills needed for today’s digital workplace with our Microsoft Office beginner Course.</p>
     </section>
 
     <section id="learning">
         <h2>Key Learning Areas</h2>
         <ul>
             <li><b>Windows & File Management:</b> Navigating the operating system, creating folders, organizing files</li>
-            <li><b>Microsoft Word:</b> Create and format professional documents.</li>
-            <li><b>Microsoft Excel:</b> Manage data, use formulas, and build simple spreadsheets.</li>
-            <li><b>Microsoft PowerPoint:</b> Design impactful presentations with visuals and animations.</li>
-            <li><b>Microsoft Outlook:</b> Organise emails, contacts, and calendars effectively.</li>
+            <li><b>Microsoft Word:</b> Create and format professional documents.</li>
+            <li><b>Microsoft Excel:</b> Manage data, use formulas, and build simple spreadsheets.</li>
+            <li><b>Microsoft PowerPoint:</b> Design impactful presentations with visuals and animations.</li>
+            <li><b>Microsoft Outlook:</b> Organise emails, contacts, and calendars effectively.</li>
         </ul>
     </section>
 
     <section id="outcomes">
         <h2>What will I learn?</h2>
         <ul>
-            <li>Create and format professional documents using Microsoft Word.</li>
+            <li>Create and format professional documents using Microsoft Word.</li>
             <li>Use tables, images, and page layouts to enhance your Word projects.</li>
-            <li>Organise and manage data effectively in Microsoft Excel.</li>
+            <li>Organise and manage data effectively in Microsoft Excel.</li>
             <li>Apply basic formulas and functions to perform quick calculations.</li>
-            <li>Design impactful PowerPoint presentations with visuals and animations.</li>
+            <li>Design impactful PowerPoint presentations with visuals and animations.</li>
             <li>Use templates and slide layouts for professional presentation design.</li>
-            <li>Manage emails, contacts, and calendars in Microsoft Outlook.</li>
+            <li>Manage emails, contacts, and calendars in Microsoft Outlook.</li>
             <li>Build confidence in completing everyday office tasks using Microsoft Office tools.</li>
         </ul>
     </section>
 
     <div class="footer-band">
         <div class="footer-content">
-            NOTE : Upon successful completion of the course, you will be presented with a Sher’s Study Centre certificate of completion. Sher’s Study Centre is not an accredited Training Centre, or Testing Centre, we simply provide you with the skills and confidence for today's digital workplace.
+            NOTE : Upon successful completion of the course, you will be presented with a Sher’s Study Centre certificate of completion.
+        Sher’s Study Centre is not an accredited Training Centre, or Testing Centre, we simply provide you with the skills and confidence for today's digital workplace.
         </div>
     </div>
 
     <script>
-        // Scroll behavior
-        window.onscroll = function() {
-            var logoBox = document.getElementById("logoBox");
-            if (window.pageYOffset > 50) { logoBox.classList.add("scrolled"); }
-            else { logoBox.classList.remove("scrolled"); document.getElementById("menu").style.display = "none"; }
-        };
-
-        // Menu toggle
-        function toggleMenu() {
-            var menu = document.getElementById("menu");
-            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        function toggleMenu(event) {
+            event.stopPropagation();
+            document.getElementById("menu").classList.toggle("show");
         }
+        window.onclick = () => { document.getElementById("menu").classList.remove("show"); }
     </script>
 </body>
 </html>
